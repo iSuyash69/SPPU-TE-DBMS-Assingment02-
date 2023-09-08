@@ -1,11 +1,9 @@
 # SPPU-TE-DBMS-Assingment02-
 SQL Queries:
-Consider the given Database Schema: for problem statement 1 1. Dept (Deptno, Name, Location, Managerempid)
+Consider the given Database Schema: for problem statement 1 
+1. Dept (Deptno, Name, Location, Managerempid)
 2. Employees
-(name, empid, address,
-city, dob,
-date_of_joining,gender, salary, deptno)
-Gender must take value 'M' or 'F'.
+(name, empid, address,city, dob,date_of_joining,gender, salary, deptno) Gender must take value 'M' or 'F'.
 3. Project(Projectid, title,city).
 4. Works (empid, Projectid, total_hrs_worked);
 5. Dependant(empid, name_of_dependant, age, relation) Primary Key is underlined.
