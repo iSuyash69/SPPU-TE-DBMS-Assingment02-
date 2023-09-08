@@ -1,5 +1,5 @@
-CREATE DATABASE Assignment01;
-USE Assignment01;
+CREATE DATABASE Assignment02;
+USE Assignment02;
 
 CREATE TABLE Dept
 (Deptno int PRIMARY KEY,Deptname VARCHAR(50),Location VARCHAR(50),Managerid VARCHAR(50));
@@ -84,6 +84,8 @@ VALUES
 (108, "Anjali Reddy", 58, "Aunt"),
 (109, "Aryan Verma", 5, "Son"),
 (110, "Kavita Joshi", 29, "Mother");
+
+--Creating tables and inserting data coverd query 01 - query 03 
 
 -- Query 04 :
 
@@ -194,7 +196,7 @@ WHERE Deptno IN(SELECT Deptno FROM Employees WHERE Empid=108);
 SELECT Projectid,Total_hrs_worked FROM Works
 WHERE Empid IN(SELECT Empid FROM Employees WHERE Empid=107);
 
--- Assignment 03 Queries
+-- Assignment 03 Queries    -- consider this  assignment 03 queries as personal queries for assignment 02
 
 -- Query 01 :
 
@@ -291,7 +293,6 @@ INNER JOIN  Employees
 ON Dept.Deptno=Employees.Deptno
 GROUP BY Dept.Deptname;
 
--- Query 9
 
 
 
