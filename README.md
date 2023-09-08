@@ -1,27 +1,30 @@
 # SPPU-TE-DBMS-Assingment02-
-SPPU TE DBMS MYSQL Assignment02 : SQL Queries all types of Join, Sub-Query and View: Write at least 10 SQL queries for suitable database applications using SQL DML statements. 
-1. Develop a SQL query to list employees having birthday in Jan of computer dept
-2. Develop a SQL query to Find the names of all employees who work for "ERP project
-3. Develop a SQL query to Find the names and cities of residence of all employees who work for "Banking project"
-4. Develop a SQL query to find time required for "Banking
-project"
-5. Develop a SQL query to Find all employees in the database who live in the same cities as the project for which they work. 6. Develop a SQL query to Find all employees in the database who live in the same cities and on the same streets as do their managers.
-7. Develop a SQL query to Find all employees in the database who do not work for "Banking project"
-8. Develop a SQL query to find average salary of each
-department
-9. Develop a SQL query to Find all employees in the database who earn more than each employee of "Testing Department" 10. Develop a SQL query to Find all employees who earn more
-than the average salary of all employees of their department. 11. Develop a SQL query to Find the department that has the most employees.
-12. Develop a SQL query to Find the department that has the
-smallest payroll.
-13. Develop a SQL query to Find the employees working on each project.
-14. Develop a SQL query to Find the employees who are not
-having any project.
-15. Develop a SQL query to Find the employees who is not having any project as well as projects who are not having employees. 16. Develop a SQL query to Find the employees whose
-department is located in "main building"
-17. Develop a SQL query to find employees working on more than
-2 project of "Development department"
-18. Develop a SQL query to display senior person of "Testing
-Department"
-19. Create a view containing the total number of employees whose project location is "Pune"
-20. Calculate total travelling allowance for all using view (1000 Rs each)
-Design 5 more queries having join of 3 tables and aggregate functions as per your choice
+SQL Queries:
+Consider the given Database Schema: for problem statement 1 1. Dept (Deptno, Name, Location, Managerempid)
+2. Employees
+(name, empid, address,
+city, dob,
+date_of_joining,gender, salary, deptno)
+Gender must take value 'M' or 'F'.
+3. Project(Projectid, title,city).
+4. Works (empid, Projectid, total_hrs_worked);
+5. Dependant(empid, name_of_dependant, age, relation) Primary Key is underlined.
+Projects are 'Banking Project', 'Testing Project', 'ERP system'. 'Software management' etc
+Consider departments as""Development". "Testing", "Planning", "Service", "Administration" etc
+Consider Locations for department as "Building 1", "Building 2", "Building 3", "Main building"
+employee id will start as 101 to 300
+1. Develop DDL to implement the above schema enforcing primary key, check constraints (F and M for gender) and foreign key constraints.
+2. Insert data in each table.
+3. Develop DML to Populate Database
+4. Add column Mobile number in employee table
+5. Update mobile numbers for each employee.
+6. "Testing Project"is cancelled so delete that entry from project
+7. Develop a SQL query to list employees having name starting with 'S'
+8. Develop a SQL query to list department having location 'Building 1'
+9. Develop a SQL query to list employee having joining year 2019 to 2020
+10. Develop a SQL query to display all employees having
+salary > 50000
+11. Develop a SQL query to display all projects of "Pune" 12. Develop a SQL query to display all dependants of
+employee id 102
+13. Develop a SQL query to display all manager names 14. Develop a SQL query to find the age of all employees 15. Display all employees in descending order of age
+Design 5 more simple queries having date, string and other functions as per your choice
