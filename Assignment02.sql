@@ -1,17 +1,17 @@
-CREATE DATABASE Assignment02;
-USE Assignment02;
+CREATE DATABASE ASS1;
+USE ASS1;
 
 CREATE TABLE Dept
-(Deptno int PRIMARY KEY,Deptname VARCHAR(50),Location VARCHAR(50),Managerid VARCHAR(50));
+(DeptNo INT PRIMARY KEY, DeptName VARCHAR(50),Location VARCHAR(50), ManagerId INT);
 
-INSERT INTO Dept 
-(Deptno,Deptname,Location,Managerid)
-VALUES
-(401,"accounts","Building 1","4401"),
+INSERT INTO Dept
+(DeptNo,DeptName,Location,ManagerId)
+VALUES 
+(401,"Accounts","Building 1",4401),
 (402,"Operations","Building 1","4402"),
-(403,"management","Building 2","4403"),
-(404,"advertisment","Building 2","4404"),
-(405,"finance","Building 2","4405"),
+(403,"Management","Building 2","4403"),
+(404,"Advertisment","Building 2","4404"),
+(405,"Finance","Building 2","4405"),
 (406,"Transportation","Building 2","4406"),
 (407,"Research","Building 3","4407"),
 (408,"Administration","Building 3","4408"),
@@ -19,28 +19,31 @@ VALUES
 (410,"Sales","Building 4","44010");
 
 CREATE TABLE Employees
-(Empname VARCHAR(50),Empid INT PRIMARY KEY,Address VARCHAR(50),City VARCHAR(50),DOB DATE,DOJ DATE,Gender ENUM('M','F'),Salary VARCHAR(50),Deptno INT,FOREIGN KEY(Deptno)REFERENCES Dept(Deptno)); 
+(EmpId INT PRIMARY KEY,EmpName VARCHAR(50),Address VARCHAR(50),
+City VARCHAR(50),DOB DATE,DOJ DATE,Gender ENUM('M','F'),Salary VARCHAR(50),DeptNo INT,
+FOREIGN KEY(DeptNo) REFERENCES Dept(DeptNo));
 
-INSERT INTO Employees (Empname, Empid, Address, City, DOB, DOJ, Gender, Salary, Deptno)
+INSERT INTO Employees
+(EmpID,EmpName,Address,City,DOB,DOJ,Gender,Salary,DeptNo)
 VALUES
-('Aarav Kumar', 101, '1234 Green Avenue', 'Mumbai', '1992-05-15', '2018-02-20', 'M', '60000', 401),
-('Ishika Patel', 102, '567 Rose Garden Road', 'Ahmedabad', '1990-09-22', '2019-01-10', 'F', '55000', 402),
-('Arjun Singhania', 103, '789 Sapphire Heights', 'Bangalore', '1995-03-10', '2020-06-05', 'M', '62000', 403),
-('Nisha Reddy', 104, '234 Emerald Street', 'Hyderabad', '1992-11-08', '2017-08-15', 'F', '58000', 404),
-('Aditya Verma', 105, '456 Diamond Plaza', 'Delhi', '1987-07-18', '2022-03-25', 'M', '63000', 405),
-('Sneha Rajan', 106, '890 Pearl Manor', 'Chennai', '1993-01-30', '2021-11-02', 'F', '59000', 406),
-('Rohan Desai', 107, '678 Ruby Towers', 'Kolkata', '1989-12-05', '2016-04-12', 'M', '58000', 407),
-('Maya Sharma', 108, '345 Crystal Avenue', 'Pune', '1991-06-27', '2023-01-18', 'F', '60000', 408),
-('Vikram Menon', 109, '101 Topaz Residency', 'Kochi', '1994-04-02', '2022-07-30', 'M', '64000', 409),
-('Meera Gupta', 110, '876 Amethyst Road', 'Jaipur', '1996-08-12', '2020-09-05', 'F', '57000', 410);
+(101,'Suyash Deshpande','B20 Anand Bhakti Sankul','Nashik','2003-09-19','2023-12-15','M','50000',401),
+(102, 'Arjuna Singh', '567 Rose Garden Road', 'Ahmedabad', '1990-09-22', '2019-01-10', 'F', '55000', 402),
+(103, 'Arjun Singhania', '789 Sapphire Heights', 'Bangalore', '1995-03-10', '2020-06-05', 'M', '62000', 403),
+(104, 'Nisha Reddy', '234 Emerald Street', 'Hyderabad', '1992-11-08', '2017-08-15', 'F', '58000', 404),
+(105, 'Aditya Verma', '456 Diamond Plaza', 'Delhi', '1987-07-18', '2022-03-25', 'M', '63000', 405),
+(106, 'Sneha Rajan', '890 Pearl Manor', 'Chennai', '1993-01-30', '2021-11-02', 'F', '59000', 406),
+(107, 'Rohan Desai', '678 Ruby Towers', 'Kolkata', '1989-12-05', '2016-04-12', 'M', '58000', 407),
+(108, 'Maya Sharma', '345 Crystal Avenue', 'Pune', '1991-06-27', '2023-01-18', 'F', '60000', 408),
+(109, 'Vikram Menon', '101 Topaz Residency', 'Kochi', '1994-04-02', '2022-07-30', 'M', '64000', 409),
+(110, 'Meera Gupta', '876 Amethyst Road', 'Jaipur', '1996-08-12', '2020-09-05', 'F', '57000', 410);
 
 CREATE TABLE Project
-(Projectid INT PRIMARY KEY,Title VARCHAR(50),City VARCHAR(50));
+(ProjectId INT PRIMARY KEY ,Title VARCHAR(50),City VARCHAR(50));
 
-INSERT INTO Project 
-(Projectid,Title,City)
+INSERT INTO Project
+(ProjectId,Title,City)
 VALUES
-(901,"Testing Project","Mumbai"),
+(901,'Testing Project','Nashik'),
 (902,"ERP System","Pune"),
 (903,"Testing Project","Aurangabad"),
 (904,"Software Project","Mumbai"),
@@ -52,10 +55,10 @@ VALUES
 (910,"Banking Project","Banglore");
 
 CREATE TABLE Works
-(Empid INT,Projectid INT,Total_hrs_worked VARCHAR(50),FOREIGN KEY(Empid) REFERENCES Employees(Empid),FOREIGN KEY(Projectid) REFERENCES Project(Projectid)); 
+(EmpId INT,ProjectId INT,Total_Hrs_Worked VARCHAR(50),FOREIGN KEY(EmpId)REFERENCES Employees(EmpId),FOREIGN KEY(ProjectId)REFERENCES Project(ProjectId));
 
 INSERT INTO Works
-(Empid,Projectid,Total_hrs_worked)
+(EmpId,ProjectId,Total_Hrs_Worked)
 VALUES
 (101,901,"50"),
 (102,902,"50"),
@@ -69,12 +72,12 @@ VALUES
 (110,910,"50");
 
 CREATE TABLE Dependant
-(Empid INT,Name_of_dependant VARCHAR(50),Age INT,Relation VARCHAR(50),FOREIGN KEY(Empid) REFERENCES Employees(Empid));
+(EmpId INT,DependantName VARCHAR(50),Age INT,Relation VARCHAR(50),FOREIGN KEY(EmpId)REFERENCES Employees(EmpId));
 
 INSERT INTO Dependant
-(Empid,Name_of_Dependant,Age,Relation)
+(EmpId,DependantName,Age,Relation)
 VALUES
-(101,"Suyash Deshpande",21,"Father"),
+(101,"Asim Dada",22,"Godfather"),
 (102, "Priya Patel", 28, "Sister"),
 (103, "Amit Khanna", 45, "Uncle"),
 (104, "Sneha Desai", 22, "Cousin"),
@@ -85,210 +88,232 @@ VALUES
 (109, "Aryan Verma", 5, "Son"),
 (110, "Kavita Joshi", 29, "Mother");
 
---Creating tables and inserting data coverd query 01 - query 03 
 
--- Query 04 :
+-- Query 1: Add column Mobile number in employee table
 
-ALTER TABLE Employees
-ADD COLUMN Mobile_no VARCHAR(50);
+ ALTER TABLE Employees
+ ADD COLUMN PhoneNo VARCHAR(50);
 
--- Query 05 :
-
-UPDATE Employees
-SET Mobile_no ="9850514657"
-WHERE Empid = 101;
+-- Query 2: Update mobile numbers for each employee.
 
 UPDATE Employees
-SET Mobile_no = "8765432109"
-WHERE Empid = 102;
+SET PhoneNo = "9850514657"
+WHERE EmpId = 101;
 
 UPDATE Employees
-SET Mobile_no = "7654321098"
-WHERE Empid = 103;
+SET PhoneNo = "9850524657"
+WHERE EmpId = 102;
 
 UPDATE Employees
-SET Mobile_no = "6543210987"
-WHERE Empid = 104;
+SET PhoneNo = "9850534657"
+WHERE EmpId = 103;
 
 UPDATE Employees
-SET Mobile_no = "5432109876"
-WHERE Empid = 105;
+SET PhoneNo = "9850544657"
+WHERE EmpId = 104;
 
 UPDATE Employees
-SET Mobile_no = "4321098765"
-WHERE Empid = 106;
+SET PhoneNo = "9850514657"
+WHERE EmpId = 101;
 
 UPDATE Employees
-SET Mobile_no = "3210987654"
-WHERE Empid = 107;
+SET PhoneNo = "9850514657"
+WHERE EmpId = 101;
 
 UPDATE Employees
-SET Mobile_no = "2109876543"
-WHERE Empid = 108;
+SET PhoneNo = "9850554657"
+WHERE EmpId = 105;
 
 UPDATE Employees
-SET Mobile_no = "1098765432"
-WHERE Empid = 109;
+SET PhoneNo = "9850514657"
+WHERE EmpId = 101;
 
 UPDATE Employees
-SET Mobile_no = "9876543210"
-WHERE Empid = 110;
+SET PhoneNo = "9850564657"
+WHERE EmpId = 106;
 
--- Query 06 :
+UPDATE Employees
+SET PhoneNo = "9850574657"
+WHERE EmpId = 107;
 
-DELETE FROM Works 
-WHERE Projectid IN(SELECT Projectid FROM Project WHERE Title="Testing Project");
+UPDATE Employees
+SET PhoneNo = "9850584657"
+WHERE EmpId = 108;
 
-DELETE FROM Project 
-WHERE Title="Testing Project";
+UPDATE Employees
+SET PhoneNo = "9850594657"
+WHERE EmpId = 109;
 
--- A better approach here is cascading foriegn key ie. while making a key foriegn key add: ON DELETE CASCADE AND ON UPDATE CASCADE , so that if changes are made in the primary keys that will also refelect in the forign key
+UPDATE Employees
+SET PhoneNo = "9850504657"
+WHERE EmpId = 110;
 
--- Query 07 :
-
-SELECT *FROM Employees
-WHERE Empname LIKE 'S%';
-
--- Query 08 :
-
-SELECT Deptno,Deptname FROM Dept
-WHERE Location ="Building 1";
-
--- Query 09 :
-
-SELECT Empname,DOJ FROM Employees
-WHERE DOJ BETWEEN '2018-01-01' AND '2020-01-01';
-
--- Query 10 :
-
-SELECT Empid,Empname,DOJ,Salary FROM Employees
-WHERE Salary>'50000';
+-- Query 5: Develop a SQL query to list employees  having name starting with ‘S’
 
 SELECT * FROM Employees
-WHERE Empid=108;
+WHERE EmpName LIKE 'S%';
 
--- Query 11 :
+-- Query 6: Develop a SQL query to list department having location ‘Building 1’
 
-SELECT *FROM Project
-WHERE City='Banglore';
+SELECT * FROM Dept
+WHERE Location = 'Building 1';
 
--- Query 12 :
+-- Query 7: Develop a SQL query to list employee having joining year 2019 to 2020
 
-SELECT Name_of_dependant,Relation FROM Dependant
-WHERE Empid=102;
+SELECT * FROM Employees
+WHERE DOJ > '2018-12-31' AND DOJ <'2021-01-01';
 
--- Query 13 cant be performed because instead of Manager_name , Managerid was taken
+SELECT * FROM Employees
+WHERE YEAR(DOJ) BETWEEN 2019 AND 2020;
 
--- Query 14 cant be performed because age was not added for employees
+-- Query 8: Develop a SQL query to Find the names and cities of residence of all employees who work for “Banking project”
 
--- Query 15 :
-
-SELECT Empid,Empname,City,DOB,DOJ FROM Employees
-ORDER BY DOB DESC;
-
--- Personal Query : Check what department is the employee 'Maya Sharma' working in :
- 
-SELECT Deptno,Deptname,Managerid FROM Dept
-WHERE Deptno IN(SELECT Deptno FROM Employees WHERE Empid=108);
-
--- Personal Query : Check total working hrs of 'Maya Sharma' :
-
-SELECT Projectid,Total_hrs_worked FROM Works
-WHERE Empid IN(SELECT Empid FROM Employees WHERE Empid=107);
-
--- Assignment 03 Queries    -- consider this  assignment 03 queries as personal queries for assignment 02
-
--- Query 01 :
-
--- Method 1 :
-
-SELECT Empid,Empname,DOB FROM Employees
-WHERE Deptno IN(SELECT Deptno FROM Dept WHERE Deptname='Transportation') and MONTH(DOB)=1;
-
--- Methon 2 - Using JOINS :
-
-SELECT Empid,Empname,DOB FROM Employees
-INNER JOIN Dept 
-ON Employees.Deptno=Dept.Deptno
-WHERE Dept.Deptname='Transportation' AND MONTH(Employees.DOB)=1;
-
--- Query 2 :
-
-SELECT Employees.Empid,Empname FROM Employees
+SELECT Employees.EmpId, Employees.EmpName,Employees.City
+FROM Employees
 INNER JOIN Works
-ON Employees.Empid=Works.Empid
-INNER JOIN Project
-ON Works.Projectid=Project.Projectid
-WHERE Project.Title="ERP System";
-
--- Query 3 :
-
-SELECT Employees.Empid,Empname,Employees.City FROM Employees
-INNER JOIN Works
-ON Employees.Empid=Works.Empid
-INNER JOIN Project
-ON Works.Projectid=Project.Projectid
-WHERE Project.Title="Banking Project";
-
--- Query 4 : 
-
--- To display sum of total working hrs :
-
-SELECT SUM(Total_hrs_worked) FROM Works
+ON Employees.EmpId = Works.EmpId
 INNER JOIN Project 
-ON Works.Projectid = Project.Projectid
-WHERE Project.Title = "Banking Project";
+ON Works.ProjectId = Project.ProjectId
+WHERE Project.Title='Banking Project';
 
--- To display empid,empname and their respective working hrs :
-
-SELECT Employees.Empid,Employees.Empname,Works.Total_hrs_worked FROM Employees
-INNER JOIN Works 
-ON Employees.Empid = Works.Empid
-INNER JOIN Project 
-ON Works.Projectid = Project.Projectid
-WHERE Project.Title = "Banking Project";
-
--- Query 5 :
-
--- There was no city matching so making one of them matching:
+-- Query 9: Develop a SQL query to Find all employees in the database who live in the same cities as the project  for which they work
 
 UPDATE Employees
-SET City="Banglore"
-WHERE Empid=109;
+SET City='Pune'
+WHERE EmpId=105;
 
-SELECT Employees.Empid,Employees.Empname,Project.Title,Employees.City,Project.City AS Pcity FROM Employees
+SELECT Employees.EmpId,Employees.EmpName,Project.City
+FROM Employees
 INNER JOIN Works
-ON Employees.Empid=Works.Empid
-INNER JOIN Project
-ON Works.Projectid=Project.Projectid
-WHERE Employees.City=Project.City;
-
--- Query 6 :
-
--- Cant be performed because manager address was not told to be taken eariler
-
--- Query 7 :
-
-SELECT Employees.Empid,Employees.Empname,Project.Title FROM Employees
-INNER JOIN Works
-ON Employees.Empid=Works.Empid
+ON Employees.EmpId = Works.EmpId
 INNER JOIN Project 
-ON Works.Projectid=Project.Projectid
-WHERE Project.Title != "Banking Project";
+ON Works.ProjectId = Project.ProjectId
+WHERE Employees.City = Project.City;
 
--- Query 8
+-- Query 10: Develop  a SQL query to find time required for “Banking project”
 
--- Inserting some employees because every department was having only one employee
+SELECT Project.Title, SUM(CAST(Works.Total_Hrs_Worked AS DECIMAL)) AS Total_Hrs_Required
+FROM Works
+INNER JOIN Project 
+ON Works.ProjectId = Project.ProjectId
+WHERE Project.Title = 'Banking Project';
+
+
+-- Query 11: Testing Project”is canceled so delete that entry from project
+
+DELETE FROM Works
+WHERE ProjectId IN
+(SELECT ProjectId FROM Project WHERE Title='Testing Project');
+
+DELETE Works
+FROM Works
+INNER JOIN Project
+ON Works.ProjectId = Project.ProjectId
+WHERE Project.Title = 'Testing Project';
+
+DELETE FROM Project 
+WHERE Title='Testing Project';
+
+-- Query 12: Develop a SQL query to display all employees having salary > 50000
+
+SELECT EmpId,EmpName,Salary 
+FROM Employees
+WHERE Salary>50000;
+
+-- Query 13: Develop a SQL query to display all projects  of “Pune”
+
+SELECT ProjectId,Title FROM Project 
+WHERE City = 'Pune';
+
+-- Query 14: Develop a SQL query to display all dependants of  employee id 102
+
+INSERT INTO Dependant 
+(EmpId,DependantName,Age,Relation)
+VALUES
+(102,'Morarji Pandit',70,'Nanasaheb Peshwa');
+
+SELECT DependantName,Age,Relation 
+FROM Dependant 
+INNER JOIN Employees
+ON Dependant.EmpId=Employees.EmpId
+WHERE Employees.EmpId=102;
+
+-- Query 15: Develop  a SQL query to Find the number of employees working on each project.
+
+SELECT Project.Title,COUNT(Works.EmpId) AS Employees,GROUP_CONCAT(Employees.EmpName) AS EmployeeNames
+FROM Project 
+INNER JOIN Works
+ON Project.ProjectId = Works.ProjectId
+INNER JOIN Employees
+ON Works.EmpId = Employees.EmpId
+GROUP BY Project.Title;
+
+-- Query 16: Develop  a SQL query to find average salary of each department
 
 INSERT INTO Employees
+(EmpID,EmpName,Address,City,DOB,DOJ,Gender,Salary,DeptNo)
 VALUES
-('Suyash Deshpande', 111, '1234 Park Avenue', 'Mumbai', '1992-05-15', '2018-02-20', 'M', '80000',403,"9822623167");
+(111,'Surya Yadav','B20 Anand Bhakti Sankul','Nashik','2003-09-19','2023-12-15','M','60000',401);
 
-INSERT INTO Employees
-VALUES
-('Aseem Avhad', 112, '1234 Bnadra West', 'Mumbai', '1992-05-15', '2018-02-20', 'M', '70000',409,"9552090567");
+SELECT Dept.DeptNo,Dept.DeptName,AVG(CAST(Employees.Salary AS DECIMAL)) AS Avg_Salary,COUNT(Employees.EmpId) AS Employees,GROUP_CONCAT(Employees.EmpName) AS Employee_Names
+FROM Dept
+INNER JOIN Employees
+ON Dept.DeptNo = Employees.DeptNo
+GROUP BY Dept.DeptNo,Dept.DeptName;
 
-SELECT Dept.Deptname,AVG(Employees.Salary) FROM Dept
-INNER JOIN  Employees
-ON Dept.Deptno=Employees.Deptno
-GROUP BY Dept.Deptname;
+-- Query 17: Develop  a SQL query to find the age of all employees
+
+SELECT EmpId,EmpName,DOB,FLOOR(DATEDIFF(CURDATE(),DOB)/365.25) AS Age
+FROM Employees;
+
+-- Query 18: Display all employees in descending order of age
+
+SELECT EmpId,EmpName,DOB,FLOOR(DATEDIFF(CURDATE(),DOB)/365.25) AS Age
+FROM Employees
+ORDER BY Age DESC;
+
+-- Query 19: Develop  a SQL query to Find the names of all employees who work for “ERP System"
+
+SELECT Project.Title,COUNT(Employees.EmpId) As Employees,GROUP_CONCAT(Employees.EmpName) AS Employee_Names
+FROM Project
+INNER JOIN Works
+ON Project.ProjectId=Works.ProjectId
+INNER JOIN Employees
+ON Works.EmpId=Employees.EmpId
+WHERE Project.Title='ERP System';
+
+-- Query 20: Develop  a SQL query to display senior person of “Sales”
+
+SELECT Employees.EmpName, FLOOR(DATEDIFF(CURDATE(),Employees.DOJ)/365.25) AS Exp
+FROM Dept
+INNER JOIN Employees
+ON Dept.DeptNo=Employees.DeptNo
+WHERE Dept.DeptName='Sales'
+ORDER BY Exp DESC
+LIMIT 1;
+
+-- Query 21: Develop  a SQL query to Find the employees  who are not having any project.
+
+SELECT Employees.EmpId,Employees.EmpName
+FROM Employees
+LEFT JOIN Works
+ON Employees.EmpId = Works.EmpId
+WHERE Works.EmpId IS NULL;
+
+-- Query 22: Create a view containing the total number of employees  whose project location is  “Pune”
+
+CREATE VIEW EmployeeInPune AS
+SELECT Project.City, COUNT(Employees.EmpId) AS Employees
+FROM Project
+INNER JOIN Works
+ON Project.ProjectId = Works.ProjectId
+INNER JOIN Employees 
+ON Works.EmpId=Employees.EmpId
+WHERE Project.City='Banglore';
+
+SELECT * FROM EmployeeInPune;
+
+-- Query 23: Create a view containing the total number of employees  whose project location is  “Pune”. Calculate total traveling allowance for all using view (1000 Rs each)
+
+SELECT City , Employees * 1000 AS Total_Travelling_Allowance
+FROM EmployeeInPune;
